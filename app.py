@@ -66,7 +66,7 @@ def get_articles_link():
             articles.append(href)
             
             # print(href)
-            
+        print("\n\n") 
         print(f'The number of articles found at {URL} is {len(articles)}')
         
     else:
@@ -85,6 +85,7 @@ def extract_articles_content():
     data = []
     
     for index, article in enumerate(articles):
+        print("\n\n")
         print(f'Article at index {index} with url {article} scraping process started')
         Article_URL = article
         req = requests.get(article, headers=HEADERS)
@@ -120,9 +121,11 @@ def extract_articles_content():
             row = [Headline, Article_URL, Full_Article, Illustrations_Url, Publication_Date, Related_Content, Cover, Posted_by]
     
             data.append(row)
+            print("\n\n")
             print(f'Article at index {index} with url {article} scraping process finished')
             
         else:
+            print("\n\n")
             print(f'Article at index {index} with url {article} scraping process blocked')
             pass
             
@@ -133,7 +136,7 @@ def extract_articles_content():
 def CNN_Data_scraper():
     
     
-    HEADERS = ["Headline", "Article URL", "Full Article", "Illustrations Url", "Publication Date", "Related Content", "Cover", "Posted by"]
+    HEADERS = ["HEADLINE", "ARTICLE URL", "FULL ARTICLE", "ILLUSTRATIONS URL", "PUBLICATION DATE", "RELATED CONTENT", "COVER", "POSTED BY"]
 
     data = extract_articles_content()
     
