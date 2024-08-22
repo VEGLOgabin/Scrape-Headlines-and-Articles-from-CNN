@@ -84,7 +84,8 @@ def extract_articles_content():
     
     data = []
     
-    for article in articles:
+    for index, article in enumerate(articles):
+        print(f'Article at index {index} with url {article} scraping process started')
         Article_URL = article
         req = requests.get(article, headers=HEADERS)
         
@@ -119,6 +120,11 @@ def extract_articles_content():
             row = [Headline, Article_URL, Full_Article, Illustrations_Url, Publication_Date, Related_Content, Cover, Posted_by]
     
             data.append(row)
+            print(f'Article at index {index} with url {article} scraping process finished')
+            
+        else:
+            print(f'Article at index {index} with url {article} scraping process blocked')
+            pass
             
     return data
 
@@ -136,5 +142,6 @@ def CNN_Data_scraper():
     
     df.to_csv("Lastest_Business_Article_From_CNN.csv")
     
+CNN_Data_scraper()
     
     
